@@ -1,0 +1,30 @@
+body {
+  font-family: -apple-system, sans-serif;
+  text-align: center;
+  padding: 2rem;
+  background: #1a1a2e;
+  color: #eee;
+}
+
+#timer-display {
+  font-size: 6rem;
+  font-weight: bold;
+  margin: 2rem 0;
+  font-variant-numeric: tabular-nums;
+}
+
+#timer-display.warning { color: #f39c12; }
+#timer-display.overtime { color: #e74c3c; }
+
+button {
+  padding: 0.8rem 1.5rem;
+  margin: 0.3rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #16213e;
+  color: #eee;
+}
+
+button:hover { background: #0f3460; }

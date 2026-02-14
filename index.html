@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Meeting Timer</h1>
+  <div id="timer-display">05:00</div>
+  <div id="controls">
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+  <div id="presets">
+    <button onclick="setTime(3)">3min</button>
+    <button onclick="setTime(5)">5min</button>
+    <button onclick="setTime(10)">10min</button>
+  </div>
+  <script src="timer.js"></script>
+</body>
+</html>
