@@ -8,7 +8,13 @@
 </head>
 <body>
   <h1>Meeting Timer</h1>
-  <div id="timer-display">05:00</div>
+  <div id="timer-visual">
+    <svg viewBox="0 0 200 200">
+      <circle class="ring-bg" cx="100" cy="100" r="90" />
+      <circle class="ring-progress" cx="100" cy="100" r="90" />
+    </svg>
+    <div id="timer-display">05:00</div>
+  </div>
   <div id="controls">
     <button id="btn-start" onclick="startTimer()">Start</button>
     <button id="btn-pause" onclick="pauseTimer()" disabled>Pause</button>
