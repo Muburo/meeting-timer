@@ -7,6 +7,21 @@ const startBtn = document.getElementById('btn-start');
 const pauseBtn = document.getElementById('btn-pause');
 const ringProgress = document.querySelector('.ring-progress');
 const CIRCUMFERENCE = 565.49;
+let alarmPlayed = false;
+let flashId = null;
+
+function flashAlarm() {
+  let count = 0;
+  flashId = setInterval(() => {
+    document.body.classList.toggle('flash');
+    count++;
+    if (count >= 10) {
+      clearInterval(flashId);
+      flashId = null;
+      document.body.classList.remove('flash');
+    }
+  }, 200);
+}
 
 function updateButtons() {
   const running = intervalId !== null;
@@ -23,6 +38,11 @@ function updateDisplay() {
   display.className = '';
   if (remainingSeconds <= 60 && remainingSeconds > 0) display.className = 'warning';
   if (remainingSeconds <= 0) display.className = 'overtime';
+
+  if (remainingSeconds === 0 && !alarmPlayed) {
+    alarmPlayed = true;
+    flashAlarm();
+  }
 
   updateRing();
 }
@@ -50,13 +70,19 @@ function pauseTimer() {
 
 function resetTimer() {
   pauseTimer();
+  if (flashId) { clearInterval(flashId); flashId = null; }
+  document.body.classList.remove('flash');
   remainingSeconds = totalSeconds;
+  alarmPlayed = false;
   updateDisplay();
 }
 
 function setTime(minutes) {
   pauseTimer();
+  if (flashId) { clearInterval(flashId); flashId = null; }
+  document.body.classList.remove('flash');
   totalSeconds = minutes * 60;
   remainingSeconds = totalSeconds;
+  alarmPlayed = false;
   updateDisplay();
 }
