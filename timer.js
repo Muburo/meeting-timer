@@ -3,6 +3,14 @@ let remainingSeconds = 300;
 let intervalId = null;
 
 const display = document.getElementById('timer-display');
+const startBtn = document.getElementById('btn-start');
+const pauseBtn = document.getElementById('btn-pause');
+
+function updateButtons() {
+  const running = intervalId !== null;
+  startBtn.disabled = running;
+  pauseBtn.disabled = !running;
+}
 
 function updateDisplay() {
   const min = Math.floor(Math.abs(remainingSeconds) / 60);
@@ -21,11 +29,13 @@ function startTimer() {
     remainingSeconds--;
     updateDisplay();
   }, 1000);
+  updateButtons();
 }
 
 function pauseTimer() {
   clearInterval(intervalId);
   intervalId = null;
+  updateButtons();
 }
 
 function resetTimer() {
